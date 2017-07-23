@@ -6,7 +6,7 @@ export const createUser = payload => ({
 });
 
 export const doLogin = payload => ({
-  type: types.USER_AUTH_SUCCEEDED,
+  type: types.USER_AUTH_REQUESTED,
   payload
 });
 
@@ -16,4 +16,8 @@ export const doLogout = () => ({
 
 export const doPasswordChange = () => ({
   type: types.USER_CHANGE_PASSWD_REQUESTED
+});
+
+export const isLoggedIn = () => ({
+  type: types.USER_CHECK_AUTH_REQUESTED
 });

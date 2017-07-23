@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.doPasswordChange = exports.doLogout = exports.doLogin = exports.createUser = undefined;
+exports.isLoggedIn = exports.doPasswordChange = exports.doLogout = exports.doLogin = exports.createUser = undefined;
 
 var _constants = require("./constants");
 
@@ -34,7 +34,7 @@ var createUser = (exports.createUser = function createUser(payload) {
 
 var doLogin = (exports.doLogin = function doLogin(payload) {
   return {
-    type: types.USER_AUTH_SUCCEEDED,
+    type: types.USER_AUTH_REQUESTED,
     payload: payload
   };
 });
@@ -48,5 +48,11 @@ var doLogout = (exports.doLogout = function doLogout() {
 var doPasswordChange = (exports.doPasswordChange = function doPasswordChange() {
   return {
     type: types.USER_CHANGE_PASSWD_REQUESTED
+  };
+});
+
+var isLoggedIn = (exports.isLoggedIn = function isLoggedIn() {
+  return {
+    type: types.USER_CHECK_AUTH_REQUESTED
   };
 });

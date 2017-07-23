@@ -52,8 +52,8 @@ var user = function user() {
 
   switch (action.type) {
     /**
-     * @description User registration
-     */
+       * @description User registration
+       */
     case type.USER_CREATE_REQUESTED:
       return _extends({}, state, { registering: true });
 
@@ -68,24 +68,26 @@ var user = function user() {
     case type.USER_CREATE_FAILED:
       return _extends({}, state, {
         registering: false,
-        fetched: true,
         error: action.payload
       });
 
     /**
-     * @description User authentication
-     */
+       * @description User authentication
+       */
     case type.USER_AUTH_REQUESTED:
+    case type.USER_CHECK_AUTH_REQUESTED:
       return _extends({}, state, { authenticating: true });
 
     case type.USER_AUTH_SUCCEEDED:
+    case type.USER_CHECK_AUTH_SUCCEEDED:
       return _extends({}, state, {
         details: action.payload,
         authenticating: false,
-        authenticated: true
+        authenticated: Boolean(action.payload)
       });
 
     case type.USER_AUTH_FAILED:
+    case type.USER_CHECK_AUTH_FAILED:
       return _extends({}, state, {
         authenticating: false,
         authenticated: false,
@@ -93,8 +95,8 @@ var user = function user() {
       });
 
     /**
-     * @description User logout
-     */
+       * @description User logout
+       */
     case type.USER_LOGOUT_SUCCEEDED:
       return _extends({}, state, {
         details: {},
@@ -103,12 +105,12 @@ var user = function user() {
       });
 
     /*case REHYDRATE:
-     let incoming = action.payload.user;
-     if (incoming) return {...state, ...incoming};
-     return state;*/
+       let incoming = action.payload.user;
+       if (incoming) return {...state, ...incoming};
+       return state;*/
     /**
-     * @description User current state
-     */
+       * @description User current state
+       */
     default:
       return state;
   }

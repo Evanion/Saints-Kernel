@@ -23,7 +23,6 @@ const user = (state = UserState, action = {}) => {
       return {
         ...state,
         registering: false,
-        fetched: true,
         error: action.payload
       };
 
@@ -31,17 +30,20 @@ const user = (state = UserState, action = {}) => {
        * @description User authentication
        */
     case type.USER_AUTH_REQUESTED:
+    case type.USER_CHECK_AUTH_REQUESTED:
       return { ...state, authenticating: true };
 
     case type.USER_AUTH_SUCCEEDED:
+    case type.USER_CHECK_AUTH_SUCCEEDED:
       return {
         ...state,
         details: action.payload,
         authenticating: false,
-        authenticated: true
+        authenticated: Boolean(action.payload)
       };
 
     case type.USER_AUTH_FAILED:
+    case type.USER_CHECK_AUTH_FAILED:
       return {
         ...state,
         authenticating: false,
