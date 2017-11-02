@@ -4,6 +4,8 @@ var _regenerator = require("babel-runtime/regenerator");
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
+var _effects = require("redux-saga/effects");
+
 var _actions = require("./actions");
 
 var actions = _interopRequireWildcard(_actions);
@@ -15,8 +17,6 @@ var types = _interopRequireWildcard(_constants);
 var _reducer = require("./reducer");
 
 var reducer = _interopRequireWildcard(_reducer);
-
-var _effects = require("redux-saga/effects");
 
 var _sagas = require("./sagas");
 
@@ -52,36 +52,12 @@ function sagas(api) {
           case 0:
             _context.next = 2;
             return (0, _effects.takeLatest)(
-              types.FORUM_CREATE_BOARD_REQUESTED,
-              Sagas.createBoard,
+              types.MEMBER_GET_REQUESTED,
+              Sagas.getMember,
               api
             );
 
           case 2:
-            _context.next = 4;
-            return (0, _effects.takeLatest)(
-              types.FORUM_GET_BOARD_REQUESTED,
-              Sagas.loadBoard,
-              api
-            );
-
-          case 4:
-            _context.next = 6;
-            return (0, _effects.takeLatest)(
-              types.FORUM_GET_BOARDS_REQUESTED,
-              Sagas.loadBoards,
-              api
-            );
-
-          case 6:
-            _context.next = 8;
-            return (0, _effects.takeLatest)(
-              types.FORUM_CREATE_THREAD_REQUESTED,
-              Sagas.createThread,
-              api
-            );
-
-          case 8:
           case "end":
             return _context.stop();
         }

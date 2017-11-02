@@ -1,18 +1,37 @@
 "use strict";
 
-var _user = require("./user");
-
-var user = _interopRequireWildcard(_user);
-
 var _forum = require("./forum");
 
 var forum = _interopRequireWildcard(_forum);
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+var _member = require("./member");
+
+var member = _interopRequireWildcard(_member);
+
+var _user = require("./user");
+
+var user = _interopRequireWildcard(_user);
+
+function _interopRequireWildcard(obj) {
+  if (obj && obj.__esModule) {
+    return obj;
+  } else {
+    var newObj = {};
+    if (obj != null) {
+      for (var key in obj) {
+        if (Object.prototype.hasOwnProperty.call(obj, key))
+          newObj[key] = obj[key];
+      }
+    }
+    newObj.default = obj;
+    return newObj;
+  }
+}
 
 // register your module here
 var modules = {
   forum: forum,
+  member: member,
   user: user
 };
 var actions = {};

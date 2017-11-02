@@ -21,3 +21,12 @@ export const doPasswordChange = () => ({
 export const isLoggedIn = () => ({
   type: types.USER_CHECK_AUTH_REQUESTED
 });
+
+export const isAdmin = () => ({
+  type: types.USER_IS_ADMIN_REQUESTED
+});
+
+export const setToken = payload => ({
+  type: types.USER_SET_TOKEN_REQUESTED,
+  payload
+});

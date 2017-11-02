@@ -4,19 +4,17 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _extends =
-  Object.assign ||
-  function(target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
+var _toConsumableArray2 = require("babel-runtime/helpers/toConsumableArray");
+
+var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
+
+var _defineProperty2 = require("babel-runtime/helpers/defineProperty");
+
+var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+
+var _extends3 = require("babel-runtime/helpers/extends");
+
+var _extends4 = _interopRequireDefault(_extends3);
 
 var _constants = require("./constants");
 
@@ -40,29 +38,8 @@ function _interopRequireWildcard(obj) {
   }
 }
 
-function _toConsumableArray(arr) {
-  if (Array.isArray(arr)) {
-    for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) {
-      arr2[i] = arr[i];
-    }
-    return arr2;
-  } else {
-    return Array.from(arr);
-  }
-}
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-  return obj;
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
 }
 
 //import {REHYDRATE} from 'redux-persist/constants';
@@ -81,20 +58,20 @@ var forum = function forum() {
        * @description User registration
        */
     case type.FORUM_CREATE_BOARD_REQUESTED:
-      return _extends({}, state);
+      return (0, _extends4.default)({}, state);
 
     case type.FORUM_CREATE_BOARD_SUCCEEDED:
-      return _extends({}, state, {
-        boards: _extends(
+      return (0, _extends4.default)({}, state, {
+        boards: (0, _extends4.default)(
           {},
           state.boards,
-          _defineProperty({}, action.payload._id, action.payload)
+          (0, _defineProperty3.default)({}, action.payload._id, action.payload)
         ),
         error: null
       });
 
     case type.FORUM_CREATE_BOARD_FAILED:
-      return _extends({}, state, {
+      return (0, _extends4.default)({}, state, {
         loading: false,
         fetched: true,
         error: action.payload
@@ -102,7 +79,7 @@ var forum = function forum() {
 
     case type.FORUM_GET_BOARD_REQUESTED:
     case type.FORUM_GET_BOARDS_REQUESTED:
-      return _extends({}, state, {
+      return (0, _extends4.default)({}, state, {
         board: {},
         boards: {},
         loading: true,
@@ -111,7 +88,7 @@ var forum = function forum() {
       });
 
     case type.FORUM_GET_BOARD_SUCCEEDED:
-      return _extends({}, state, {
+      return (0, _extends4.default)({}, state, {
         board: action.payload,
         loading: false,
         fetched: true,
@@ -122,7 +99,7 @@ var forum = function forum() {
       action.payload.forEach(function(board) {
         boards[board._id] = board;
       });
-      return _extends({}, state, {
+      return (0, _extends4.default)({}, state, {
         boards: boards,
         loading: false,
         fetched: true,
@@ -131,29 +108,30 @@ var forum = function forum() {
 
     case type.FORUM_GET_BOARD_FAILED:
     case type.FORUM_GET_BOARDS_FAILED:
-      return _extends({}, state, {
+      return (0, _extends4.default)({}, state, {
         loading: false,
         fetched: true,
         error: action.payload
       });
 
     case type.FORUM_CREATE_THREAD_REQUESTED:
-      return _extends({}, state);
+      return (0, _extends4.default)({}, state);
 
     case type.FORUM_CREATE_THREAD_SUCCEEDED:
-      return _extends({}, state, {
-        board: _extends({}, state.board, {
-          threads: _extends({}, state.board.threads, {
-            data: [].concat(_toConsumableArray(state.board.threads.data), [
-              action.payload
-            ])
+      return (0, _extends4.default)({}, state, {
+        board: (0, _extends4.default)({}, state.board, {
+          threads: (0, _extends4.default)({}, state.board.threads, {
+            data: [].concat(
+              (0, _toConsumableArray3.default)(state.board.threads.data),
+              [action.payload]
+            )
           })
         }),
         error: null
       });
 
     case type.FORUM_CREATE_THREAD_FAILED:
-      return _extends({}, state, {
+      return (0, _extends4.default)({}, state, {
         loading: false,
         fetched: true,
         error: action.payload

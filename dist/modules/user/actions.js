@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.isLoggedIn = exports.doPasswordChange = exports.doLogout = exports.doLogin = exports.createUser = undefined;
+exports.setToken = exports.isAdmin = exports.isLoggedIn = exports.doPasswordChange = exports.doLogout = exports.doLogin = exports.createUser = undefined;
 
 var _constants = require("./constants");
 
@@ -54,5 +54,18 @@ var doPasswordChange = (exports.doPasswordChange = function doPasswordChange() {
 var isLoggedIn = (exports.isLoggedIn = function isLoggedIn() {
   return {
     type: types.USER_CHECK_AUTH_REQUESTED
+  };
+});
+
+var isAdmin = (exports.isAdmin = function isAdmin() {
+  return {
+    type: types.USER_IS_ADMIN_REQUESTED
+  };
+});
+
+var setToken = (exports.setToken = function setToken(payload) {
+  return {
+    type: types.USER_SET_TOKEN_REQUESTED,
+    payload: payload
   };
 });

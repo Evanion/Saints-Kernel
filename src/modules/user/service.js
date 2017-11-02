@@ -30,10 +30,9 @@ export const loginUser = (client, action) => {
  * Returns the current user object from the server.
  * If the check fails, the user is logged out.
  * @param client
- * @param action
  * @return {Promise.<T>}
  */
-export const isAuthenticated = (client, action) => {
+export const isAuthenticated = client => {
   const token = client.settings.storage.getItem("feathers-jwt");
   return client.passport
     .verifyJWT(token)
@@ -57,18 +56,35 @@ export const logoutUser = client => {
 
 /**
  * @description gets specific board from the API
- * @param client {Object}
+ * @param api {Object}
  * @param action {Object}
  * @returns {Promise.<TResult>}
  */
-export const newUser = (client, action) => {
+export const newUser = (api, action) => {
   console.log(client, action);
-  return client
-    .service("/users")
-    .create(action.payload)
-    .then((result, error) => {
-      console.log("API error", error);
-      console.log("API result", result);
-      return result;
+  return api.service("/users").create(action.payload).then((result, error) => {
+    console.log("API error", error);
+    console.log("API result", result);
+    return result;
+  });
+};
+
+export const saveToken = (client, action) => {
+  const currentToken = client.settings.storage.getItem("feathers-jwt");
+  return client.passport
+    .verifyJWT(currentToken)
+    .then(decoded =>
+      client
+        .service("/users")
+        .get(decoded.userId)
+        .then((result, error) => result || error)
+    )
+    .catch(() => {
+      if (action.payload) {
+        client.passport.setJWT(action.payload);
+        window.location = "/";
+        return true;
+      }
+      return client.logout();
     });
 };

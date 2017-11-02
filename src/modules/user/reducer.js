@@ -1,6 +1,13 @@
 import * as type from "./constants";
 import { UserState } from "./initialState";
+import * as reduxRouter from "react-router-redux";
 //import {REHYDRATE} from 'redux-persist/constants';
+const adminRoles = ["admin", "super-admin"];
+function checkAdmin(arr, val) {
+  return arr.some(function(arrVal) {
+    return val === arrVal;
+  });
+}
 
 const user = (state = UserState, action = {}) => {
   switch (action.type) {
@@ -62,10 +69,9 @@ const user = (state = UserState, action = {}) => {
         authenticated: false
       };
 
-    /*case REHYDRATE:
-       let incoming = action.payload.user;
-       if (incoming) return {...state, ...incoming};
-       return state;*/
+    case type.USER_IS_ADMIN_REQUESTED:
+      return checkAdmin(adminRoles, state.details.roles);
+
     /**
        * @description User current state
        */

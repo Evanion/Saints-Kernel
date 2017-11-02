@@ -9,6 +9,7 @@ function* sagas(api) {
   yield takeLatest(types.USER_AUTH_REQUESTED, Sagas.login, api);
   yield takeLatest(types.USER_LOGOUT_REQUESTED, Sagas.logout, api);
   yield takeLatest(types.USER_CHECK_AUTH_REQUESTED, Sagas.isLoggedIn, api);
+  yield takeLatest(types.USER_SET_TOKEN_REQUESTED, Sagas.setToken, api);
 }
 
 module.exports = {

@@ -3,6 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _regenerator = require("babel-runtime/regenerator");
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
 exports.createBoard = createBoard;
 exports.loadBoard = loadBoard;
 exports.loadBoards = loadBoards;
@@ -33,13 +38,19 @@ function _interopRequireWildcard(obj) {
   }
 }
 
-var _marked = [createBoard, loadBoard, loadBoards, editBoard, createThread].map(
-  regeneratorRuntime.mark
-);
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+var _marked = /*#__PURE__*/ _regenerator2.default.mark(createBoard),
+  _marked2 = /*#__PURE__*/ _regenerator2.default.mark(loadBoard),
+  _marked3 = /*#__PURE__*/ _regenerator2.default.mark(loadBoards),
+  _marked4 = /*#__PURE__*/ _regenerator2.default.mark(editBoard),
+  _marked5 = /*#__PURE__*/ _regenerator2.default.mark(createThread);
 
 function createBoard(api, action) {
   var board;
-  return regeneratorRuntime.wrap(
+  return _regenerator2.default.wrap(
     function createBoard$(_context) {
       while (1) {
         switch ((_context.prev = _context.next)) {
@@ -75,7 +86,7 @@ function createBoard(api, action) {
         }
       }
     },
-    _marked[0],
+    _marked,
     this,
     [[0, 8]]
   );
@@ -83,7 +94,7 @@ function createBoard(api, action) {
 
 function loadBoard(api, action) {
   var board;
-  return regeneratorRuntime.wrap(
+  return _regenerator2.default.wrap(
     function loadBoard$(_context2) {
       while (1) {
         switch ((_context2.prev = _context2.next)) {
@@ -119,7 +130,7 @@ function loadBoard(api, action) {
         }
       }
     },
-    _marked[1],
+    _marked2,
     this,
     [[0, 8]]
   );
@@ -127,7 +138,7 @@ function loadBoard(api, action) {
 
 function loadBoards(api, action) {
   var boards;
-  return regeneratorRuntime.wrap(
+  return _regenerator2.default.wrap(
     function loadBoards$(_context3) {
       while (1) {
         switch ((_context3.prev = _context3.next)) {
@@ -163,7 +174,7 @@ function loadBoards(api, action) {
         }
       }
     },
-    _marked[2],
+    _marked3,
     this,
     [[0, 8]]
   );
@@ -171,7 +182,7 @@ function loadBoards(api, action) {
 
 function editBoard(api, action) {
   var board;
-  return regeneratorRuntime.wrap(
+  return _regenerator2.default.wrap(
     function editBoard$(_context4) {
       while (1) {
         switch ((_context4.prev = _context4.next)) {
@@ -207,7 +218,7 @@ function editBoard(api, action) {
         }
       }
     },
-    _marked[3],
+    _marked4,
     this,
     [[0, 8]]
   );
@@ -215,7 +226,7 @@ function editBoard(api, action) {
 
 function createThread(api, action) {
   var board;
-  return regeneratorRuntime.wrap(
+  return _regenerator2.default.wrap(
     function createThread$(_context5) {
       while (1) {
         switch ((_context5.prev = _context5.next)) {
@@ -251,7 +262,7 @@ function createThread(api, action) {
         }
       }
     },
-    _marked[4],
+    _marked5,
     this,
     [[0, 8]]
   );

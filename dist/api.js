@@ -17,7 +17,6 @@ function _interopRequireDefault(obj) {
 }
 
 // @TODO: Refactor for react-native support
-// @flow
 var apiServerUrl = void 0;
 switch (window.location.hostname) {
   case "localhost":

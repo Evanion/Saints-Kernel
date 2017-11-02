@@ -1,9 +1,11 @@
-import * as user from "./user";
 import * as forum from "./forum";
+import * as member from "./member";
+import * as user from "./user";
 
 // register your module here
 const modules = {
   forum,
+  member,
   user
 };
 let actions = {};

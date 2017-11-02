@@ -4,25 +4,19 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _extends =
-  Object.assign ||
-  function(target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
+var _extends2 = require("babel-runtime/helpers/extends");
+
+var _extends3 = _interopRequireDefault(_extends2);
 
 var _constants = require("./constants");
 
 var type = _interopRequireWildcard(_constants);
 
 var _initialState = require("./initialState");
+
+var _reactRouterRedux = require("react-router-redux");
+
+var reduxRouter = _interopRequireWildcard(_reactRouterRedux);
 
 function _interopRequireWildcard(obj) {
   if (obj && obj.__esModule) {
@@ -40,7 +34,17 @@ function _interopRequireWildcard(obj) {
   }
 }
 
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
 //import {REHYDRATE} from 'redux-persist/constants';
+var adminRoles = ["admin", "super-admin"];
+function checkAdmin(arr, val) {
+  return arr.some(function(arrVal) {
+    return val === arrVal;
+  });
+}
 
 var user = function user() {
   var state =
@@ -55,10 +59,10 @@ var user = function user() {
        * @description User registration
        */
     case type.USER_CREATE_REQUESTED:
-      return _extends({}, state, { registering: true });
+      return (0, _extends3.default)({}, state, { registering: true });
 
     case type.USER_CREATE_SUCCEEDED:
-      return _extends({}, state, {
+      return (0, _extends3.default)({}, state, {
         created: action.payload,
         registering: false,
         registered: true,
@@ -66,7 +70,7 @@ var user = function user() {
       });
 
     case type.USER_CREATE_FAILED:
-      return _extends({}, state, {
+      return (0, _extends3.default)({}, state, {
         registering: false,
         error: action.payload
       });
@@ -76,11 +80,11 @@ var user = function user() {
        */
     case type.USER_AUTH_REQUESTED:
     case type.USER_CHECK_AUTH_REQUESTED:
-      return _extends({}, state, { authenticating: true });
+      return (0, _extends3.default)({}, state, { authenticating: true });
 
     case type.USER_AUTH_SUCCEEDED:
     case type.USER_CHECK_AUTH_SUCCEEDED:
-      return _extends({}, state, {
+      return (0, _extends3.default)({}, state, {
         details: action.payload,
         authenticating: false,
         authenticated: Boolean(action.payload)
@@ -88,7 +92,7 @@ var user = function user() {
 
     case type.USER_AUTH_FAILED:
     case type.USER_CHECK_AUTH_FAILED:
-      return _extends({}, state, {
+      return (0, _extends3.default)({}, state, {
         authenticating: false,
         authenticated: false,
         error: action.payload
@@ -98,16 +102,15 @@ var user = function user() {
        * @description User logout
        */
     case type.USER_LOGOUT_SUCCEEDED:
-      return _extends({}, state, {
+      return (0, _extends3.default)({}, state, {
         details: {},
         authenticating: false,
         authenticated: false
       });
 
-    /*case REHYDRATE:
-       let incoming = action.payload.user;
-       if (incoming) return {...state, ...incoming};
-       return state;*/
+    case type.USER_IS_ADMIN_REQUESTED:
+      return checkAdmin(adminRoles, state.details.roles);
+
     /**
        * @description User current state
        */
