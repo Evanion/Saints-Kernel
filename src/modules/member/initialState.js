@@ -3,5 +3,5 @@ export const MemberState = {
   loading: false,
   fetched: false,
   details: {},
-  test: falses
+  test: false
 };
